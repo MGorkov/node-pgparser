@@ -1,10 +1,10 @@
 {
   "name": "node-pgparser",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Node.js module for parsing PostgreSQL queries",
   "main": "index.js",
   "scripts": {
-    "install": "git clone -b 10-latest git://github.com/lfittl/libpg_query && cd libpg_query && make build && cd .. && node-gyp rebuild",
+    "install": "git clone -b 11-latest git://github.com/MGorkov/libpg_query && cd libpg_query && make build && cd .. && node-gyp rebuild",
     "clean": "rm -rf libpg_query build",
     "test": "mocha"
   },
