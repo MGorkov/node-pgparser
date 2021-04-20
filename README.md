@@ -28,12 +28,27 @@ if (tree instanceof Error) {
 
 ## Result
 ```js
-[ { RawStmt: 
-     { stmt: 
-        { SelectStmt: 
-           { targetList: 
-              [ { ResTarget: 
-                   { val: { A_Const: { val: { Integer: { ival: 1 } }, location: 7 } },
-                     location: 7 } } ],
-             op: 0 } } } } ]
+{
+  version: 130002,
+    stmts: [
+    {
+      stmt: {
+        SelectStmt: {
+          targetList: [
+            {
+              ResTarget: {
+                val: {
+                  A_Const: { val: { Integer: { ival: 1 } }, location: 7 }
+                },
+                location: 7
+              }
+            }
+          ],
+          limitOption: 'LIMIT_OPTION_DEFAULT',
+          op: 'SETOP_NONE'
+        }
+      }
+    }
+  ]
+}
 ```
