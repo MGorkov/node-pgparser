@@ -14,6 +14,16 @@
         ['OS=="mac"', {
           "libraries": ["../libpg_query/libpg_query.a"],
         }],
+        ['OS=="win"', {
+          "libraries": ["../libpg_query/pg_query.lib"],
+					"msvs_settings": {
+						"VCCLCompilerTool": {
+							"ExceptionHandling": 0,
+							"AdditionalOptions": ["/EHsc"]
+						}
+					},
+					"defines": [ "NAPI_DISABLE_CPP_EXCEPTIONS" ],
+        }],
       ],
     },
     {

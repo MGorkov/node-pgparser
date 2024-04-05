@@ -1,4 +1,4 @@
-name: Build on Macos
+name: Build on Windows
 
 on:
   workflow_dispatch:
@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    runs-on: macos-latest
+    runs-on: windows-latest
     strategy:
       matrix:
         node: [ 16, 18, 20 ]
@@ -22,21 +22,22 @@ jobs:
       working-directory: ${{env.GITHUB_WORKSPACE}}
       run: git clone -b "${{ matrix.libpg }}-latest" https://github.com/pganalyze/libpg_query.git
 
-    - name: Build libpg_query
+    - name: Set up Visual Studio shell
+      uses: egor-tensin/vs-shell@v2
+
+    - name: Build libpg_query on windows
       working-directory: ${{env.GITHUB_WORKSPACE}}
+      shell: cmd
       run: |
         cd libpg_query
-        make build
-    
+        nmake /F Makefile.msvc
+
     - name: Setup Node.JS v${{ matrix.node }} and run install
       uses: actions/setup-node@v4
       with:
         node-version: ${{ matrix.node }}
         architecture: ${{ matrix.architecture }}
 
-    - name: Setup Python
-      run: pip3 install setuptools
-      
     - name: Install
       run: npm install
 

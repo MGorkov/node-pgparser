@@ -12,7 +12,7 @@ jobs:
     strategy:
       matrix:
         node: [ 16, 18, 20 ]
-        libpg: [ 15 ]
+        libpg: [ 16 ]
         architecture: [ 'x64' ]
 
     steps:
