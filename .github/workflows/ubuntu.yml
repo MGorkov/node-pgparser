@@ -1,0 +1,47 @@
+name: Build on Ubuntu
+
+on:
+  workflow_dispatch:
+#  push:
+#    branches:
+#      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [ 16, 18, 20 ]
+        libpg: [ 13 ]
+        architecture: [ 'x64' ]
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Download libpq_query ${{ matrix.libpg }}-latest
+      working-directory: ${{env.GITHUB_WORKSPACE}}
+      run: git clone -b "${{ matrix.libpg }}-latest" https://github.com/pganalyze/libpg_query.git
+
+    - name: Build libpg_query
+      working-directory: ${{env.GITHUB_WORKSPACE}}
+      run: |
+        cd libpg_query
+        make build
+       
+    - name: Setup Node.JS v${{ matrix.node }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node }}
+        architecture: ${{ matrix.architecture }}
+
+    - name: Install
+      run: npm install
+
+    - name: Package
+      run: npm run binary:package
+
+    - name: Publish
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.NODE_PRE_GYP_ACCESSKEYID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.NODE_PRE_GYP_SECRETACCESSKEY }}
+      run: npm run binary:publish
