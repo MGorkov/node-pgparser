@@ -29,7 +29,7 @@ if (tree instanceof Error) {
 ## Result
 ```js
 {
-  version: 130008,
+  version: 140006,
     stmts: [
     {
       stmt: {
