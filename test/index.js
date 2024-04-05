@@ -7,11 +7,11 @@ describe('node-pgparser', function() {
   });
 
   it('should parse a null', function() {
-    assert(pgparser("select null").stmts[0].stmt.SelectStmt.targetList[0].ResTarget.val.A_Const.val.Null);
+    assert(pgparser("select null").stmts[0].stmt.SelectStmt.targetList[0].ResTarget.val.A_Const.isnull);
   });
 
   it('should parse an empty string', function() {
-    assert(pgparser("select ''").stmts[0].stmt.SelectStmt.targetList[0].ResTarget.val.A_Const.val.String.str === '');
+    assert(pgparser("select ''").stmts[0].stmt.SelectStmt.targetList[0].ResTarget.val.A_Const.sval.sval === '');
   });
 
   it('should not parse a bogus query', function() {

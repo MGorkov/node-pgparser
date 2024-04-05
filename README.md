@@ -29,7 +29,7 @@ if (tree instanceof Error) {
 ## Result
 ```js
 {
-  version: 140006,
+  version: 150001,
     stmts: [
     {
       stmt: {
@@ -37,9 +37,7 @@ if (tree instanceof Error) {
           targetList: [
             {
               ResTarget: {
-                val: {
-                  A_Const: { val: { Integer: { ival: 1 } }, location: 7 }
-                },
+                val: { A_Const: { ival: { ival: 1 }, location: 7 } },
                 location: 7
               }
             }
