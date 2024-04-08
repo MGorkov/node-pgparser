@@ -5,6 +5,18 @@ It parses the query and returns the parse tree or error object.
 
 ## Installation
 
+If you use a corporate certificate to internet access please add it to node first:
+
+```shell
+# linux and macos
+export NODE_EXTRA_CA_CERTS=/path/to/cert
+
+# windows
+set NODE_EXTRA_CA_CERTS=/path/to/cert
+```
+
+then run the command
+
 ```sh
 npm install node-pgparser
 ```
