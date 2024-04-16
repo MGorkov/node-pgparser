@@ -17,4 +17,8 @@ describe('node-pgparser', function() {
   it('should not parse a bogus query', function() {
     assert.ok(pgparser('NOT A QUERY') instanceof Error);
   });
+
+  it('should parse a PL/pgSQL', function() {
+    assert(pgparser('DO $$ BEGIN SELECT 1; END$$;', true)[0].PLpgSQL_function.action.PLpgSQL_stmt_block.body[0].PLpgSQL_stmt_execsql.sqlstmt.PLpgSQL_expr.query === 'SELECT 1');
+  });
 });

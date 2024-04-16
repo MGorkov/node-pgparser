@@ -27,6 +27,7 @@ Currently supports Nodejs v16,v18,v20 for Linux, Macos (x64 and arm64) and Windo
 
 ## Example
 
+### Parse SQL query
 ```js
 const pgparser = require('node-pgparser');
 
@@ -38,7 +39,7 @@ if (tree instanceof Error) {
 }
 ```
 
-## Result
+### Result
 ```js
 {
   version: 160001,
@@ -62,6 +63,51 @@ if (tree instanceof Error) {
   ]
 }
 ```
+
+### Parse PL/pgSQL
+```js
+const pgparser = require('node-pgparser');
+
+let tree = pgparser('DO $$ BEGIN SELECT 1; END$$;', true);
+if (tree instanceof Error) {
+  console.log('Error parsing PL/pgSQL: ', tree);
+} else {
+  console.dir(tree, {depth: null});
+}
+```
+
+### Result
+```js
+[
+  {
+    PLpgSQL_function: {
+      datums: [
+        {
+          PLpgSQL_var: {
+            refname: 'found',
+            datatype: { PLpgSQL_type: { typname: 'UNKNOWN' } }
+          }
+        }
+      ],
+      action: {
+        PLpgSQL_stmt_block: {
+          lineno: 1,
+          body: [
+            {
+              PLpgSQL_stmt_execsql: {
+                lineno: 1,
+                sqlstmt: { PLpgSQL_expr: { query: 'SELECT 1', parseMode: 0 } }
+              }
+            },
+            { PLpgSQL_stmt_return: {} }
+          ]
+        }
+      }
+    }
+  }
+]
+```
+
 
 ## Versions
 
