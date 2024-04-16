@@ -24,8 +24,23 @@ NAN_METHOD(parse) {
   pg_query_free_parse_result(result);
 }
 
+NAN_METHOD(parse_plpgsql) {
+  PgQueryPlpgsqlParseResult result;
+  Utf8String query(info[0]);
+  result = pg_query_parse_plpgsql(*query);
+
+  if (result.error) {
+    info.GetReturnValue().Set(Error(result.error->message));
+  } else {
+    info.GetReturnValue().Set(New(result.plpgsql_funcs).ToLocalChecked());
+  }
+
+  pg_query_free_plpgsql_parse_result(result);
+}
+
 NAN_MODULE_INIT(InitAll) {
     NAN_EXPORT(target, parse);
+    NAN_EXPORT(target, parse_plpgsql);
 }
 
 NODE_MODULE(parser, InitAll)

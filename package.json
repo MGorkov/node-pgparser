@@ -1,6 +1,6 @@
 {
   "name": "node-pgparser",
-  "version": "16.0.3",
+  "version": "16.1.0",
   "description": "Node.js module for parsing PostgreSQL queries",
   "main": "index.js",
   "author": {
