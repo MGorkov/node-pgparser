@@ -20,7 +20,8 @@ jobs:
 
     - name: Download libpq_query ${{ matrix.libpg }}-latest
       working-directory: ${{env.GITHUB_WORKSPACE}}
-      run: git clone -b "${{ matrix.libpg }}-latest" https://github.com/pganalyze/libpg_query.git
+#      run: git clone -b "${{ matrix.libpg }}-latest" https://github.com/pganalyze/libpg_query.git
+      run: git clone -b "master" https://github.com/MGorkov/libpg_query.git
 
     - name: Build libpg_query
       working-directory: ${{env.GITHUB_WORKSPACE}}
