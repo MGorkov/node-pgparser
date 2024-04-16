@@ -2,8 +2,16 @@ var pgparser = require('../');
 var assert = require('assert');
 
 describe('node-pgparser', function() {
-  it('should parse a query', function() {
-    assert.equal(typeof pgparser('select 1').stmts[0].stmt.SelectStmt, 'object');
+  it('should parse a query with positive value', function() {
+    assert(pgparser('select 1').stmts[0].stmt.SelectStmt.targetList[0].ResTarget.val.A_Const.ival.ival === 1);
+  });
+
+  it('should parse a query with negative value', function() {
+    assert(pgparser('select -1').stmts[0].stmt.SelectStmt.targetList[0].ResTarget.val.A_Const.ival.ival === -1);
+  });
+
+  it('should parse a query with zero value', function() {
+    assert(pgparser('select 0').stmts[0].stmt.SelectStmt.targetList[0].ResTarget.val.A_Const.ival.ival === 0);
   });
 
   it('should parse a null', function() {
