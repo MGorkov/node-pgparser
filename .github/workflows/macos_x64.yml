@@ -1,4 +1,4 @@
-name: Build on Macos
+name: Build on Macos x64
 
 on:
   workflow_dispatch:
@@ -36,7 +36,7 @@ jobs:
         architecture: ${{ matrix.architecture }}
 
     - name: Setup Python
-      run: pip3 install setuptools
+      run: brew install python-setuptools
       
     - name: Install
       run: npm install
