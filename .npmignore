@@ -2,5 +2,8 @@
 build/
 node_modules/
 lib/
+libpg_query/
+libpg_query_old/
+S3/
 .github/
 
