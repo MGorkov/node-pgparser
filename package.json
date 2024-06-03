@@ -24,7 +24,7 @@
     "module_name": "pgparser",
     "module_path": "./lib/binding/{configuration}/{node_abi}-{platform}-{arch}/",
     "remote_path": "./{module_name}/v{version}/{configuration}/{platform}/",
-    "package_name": "{module_name}-v{version}-{node_abi}-{platform}-{arch}.tar.gz",
+    "package_name": "{module_name}-v{version}-{node_abi}-{platform}-{libc}-{arch}.tar.gz",
     "host": "https://explain-nodeaddons.s3.eu-north-1.amazonaws.com/"
   },
   "scripts": {
