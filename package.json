@@ -1,6 +1,6 @@
 {
   "name": "node-pgparser",
-  "version": "16.1.9",
+  "version": "16.1.10",
   "description": "Node.js module for parsing PostgreSQL queries",
   "main": "index.js",
   "author": {
@@ -44,5 +44,14 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/MGorkov/node-pgparser.git"
-  }
+  },
+  "files": [
+    "LICENSE",
+    "README.md",
+    "binding.gyp",
+    "index.js",
+    "package.json",
+    "parser.cc",
+    "test/index.js"
+  ]
 }
