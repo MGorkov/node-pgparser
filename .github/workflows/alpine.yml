@@ -11,7 +11,7 @@ jobs:
     runs-on: alpine
     strategy:
       matrix:
-        node: [ 16, 18, 20 ]
+        node: [ 16, 18, 20, 22 ]
         libpg: [ 16 ]
         architecture: [ 'x64' ]
 
