@@ -23,7 +23,7 @@ npm install node-pgparser
 
 Uses [node-pre-gyp](https://www.npmjs.com/package/@mapbox/node-pre-gyp) to download prebuild binaries from S3 Amazon.
 
-Currently supports Nodejs v16,v18,v20 for Linux, Macos (x64 and arm64) and Windows. 
+Currently supports Nodejs v16,v18,v20,v22 for Linux, Macos (x64 and arm64) and Windows. 
 
 ## Example
 
