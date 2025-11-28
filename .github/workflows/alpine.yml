@@ -16,7 +16,7 @@ jobs:
         architecture: [ 'x64' ]
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v5
 
     - name: Download libpq_query ${{ matrix.libpg }}-latest
       working-directory: ${{env.GITHUB_WORKSPACE}}
@@ -30,7 +30,7 @@ jobs:
         make build
        
     - name: Setup Node.JS v${{ matrix.node }}
-      uses: actions/setup-node@v4
+      uses: actions/setup-node@v5
       with:
         node-version: ${{ matrix.node }}
         architecture: ${{ matrix.architecture }}
